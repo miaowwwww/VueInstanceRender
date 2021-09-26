@@ -20,24 +20,23 @@ const template = `<div>
 import Modal from './Modal.vue';
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-const component = {
-    data() { return { visible: false, modalParams: {} }; },
-    method: {
-        onOpen() {
-            this.modalParams = {};
-            this.visible = true;
-        }
-        onSuccess() {
-            // ...
-            this.onClose();
-        },
-        onClose() {
-            this.visible = false;
-            this.modalParams = null;
-        }
+@Component
+export default class App extends Vue {
+    visible = false;
+    modalParams = {};
+    onOpen() {
+        this.modalParams = {};
+        this.visible = true;
+    }
+    onSuccess() {
+        // ...
+        this.onClose();
+    },
+    onClose() {
+        this.visible = false;
+        this.modalParams = null;
     }
 }
-
 ```
 缺点： 
 * 耦合度增加：父组件需要存储对应的变量，注册相应的回调函数
