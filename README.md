@@ -215,7 +215,7 @@ declare type ClassDecorator = <TFunction extends Function>(target: TFunction) =>
 **2. 关闭弹窗的实例方法```instanceClose```, 会触发TS报错**  
 解决方法：在HelloWorld中给```instanceClose```声明。
 
-**3. 为什么使用继承的方式给子类增加方法**  
+**3. 为什么不使用继承的方式给子类增加方法**  
 
 ```js
 export class InstanceRenderClass extends Vue {
@@ -225,6 +225,7 @@ export class InstanceRenderClass extends Vue {
     }
 }
 
+@Component
 class HelloWorld extends InstanceRenderClass {
     // --
 }
@@ -240,7 +241,7 @@ class HelloWorld extends Vue {
 ```
 
 ## 其他 
-使用InstanceRender的场景，一般是弹窗（规则，创建，详情，confirm）。都是一些fixed的位置，因此你可能会需要禁止body滚动。
+1. 使用InstanceRender的场景，一般是弹窗（规则，创建，详情，confirm）。都是一些fixed的位置，因此你可能会需要禁止body滚动。
 ```js
 /**
  * 对于用的上InstanceRender的组件，一般是fixed的全屏弹窗之类的，因此一般还需要展示之后禁止页面的滚动
@@ -255,3 +256,11 @@ export const lockBodyScrollMixin = {
     },
 }
 ```
+2. 通过修改```instanceRender```静态方法，缓存实例等操作，可以有效提高重复渲染的效率。
+3. 组件中可能会出现数据字典等基础请求，设置缓存是很有必要的（或者直接传参）
+
+## 最后 
+文中出现都是代码块。重在传递思路。 
+
+```InstanceRender```不仅仅适用于弹窗。而是任何想要高内聚，低耦合，又脱离主视觉的业务，都可以考虑使用。
+
