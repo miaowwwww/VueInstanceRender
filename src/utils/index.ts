@@ -44,12 +44,12 @@ export function InstanceRender<VC extends VueClass<Vue>, NVC extends VC & IInsta
  * 因此他认为所有的属性都在当前的class中，实例化时就不会获取原型链上的静态属性。参考源代码
  * class deme extends InstanceRenderClass {  }
  */
-export class InstanceRenderClass extends Vue {
-    static instanceRender(options: ComponentOptions<Vue>) {
-    }
-    instanceClose() {
-    }
-}
+// export class InstanceRenderClass extends Vue {
+//     static instanceRender(options: ComponentOptions<Vue>) {
+//     }
+//     instanceClose() {
+//     }
+// }
 
 /**
  * 对于用的上InstanceRender的组件，一般是fixed的全屏弹窗之类的，因此一般还需要展示之后禁止页面的滚动

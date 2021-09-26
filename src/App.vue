@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <div class="test" @click="handleRender">test</div>
+    <div class="test" @click="handleRender">click me</div>
   </div>
 </template>
 
